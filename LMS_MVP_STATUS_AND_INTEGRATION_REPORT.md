@@ -2,7 +2,7 @@
 
 **Date:** December 2024  
 **Project:** SpecChem Safety LMS  
-**Status:** MVP Ready for Core User Testing  
+**Status:** MVP Ready for Core User Testing
 
 ---
 
@@ -17,6 +17,7 @@ The SpecChem Safety LMS has undergone a complete design overhaul and is now read
 ### Current Mock Data Locations
 
 #### **Landing Page (`/src/app/page.tsx`)**
+
 - **Mock Data:** Hero section stats, course cards, testimonials, categories
 - **Integration Plan:**
   - Replace hero stats with real database queries from `profiles`, `courses`, `enrollments` tables
@@ -25,6 +26,7 @@ The SpecChem Safety LMS has undergone a complete design overhaul and is now read
   - Map categories to actual course categories from database
 
 #### **Dashboard Page (`/src/app/dashboard/page.tsx`)**
+
 - **Mock Data:** Statistics cards (Total Courses: 12, Completed: 8, etc.)
 - **Integration Plan:**
   - Query `courses` table for total course count
@@ -33,6 +35,7 @@ The SpecChem Safety LMS has undergone a complete design overhaul and is now read
   - Query `profiles` table for user role distribution
 
 #### **Courses Page (`/src/app/courses/page.tsx`)**
+
 - **Mock Data:** Course listings, ratings, student counts
 - **Integration Plan:**
   - Connect to `courses` table with proper filtering
@@ -41,6 +44,7 @@ The SpecChem Safety LMS has undergone a complete design overhaul and is now read
   - Add enrollment status from `enrollments` table
 
 #### **Course Learning Page (`/src/app/courses/[slug]/learn/page.tsx`)**
+
 - **Mock Data:** Module navigation, progress tracking
 - **Integration Plan:**
   - Connect to `course_sections` table for module data
@@ -49,6 +53,7 @@ The SpecChem Safety LMS has undergone a complete design overhaul and is now read
   - Connect quiz questions from `quiz_questions` table
 
 #### **Users Page (`/src/app/users/page.tsx`)**
+
 - **Status:** ✅ **FULLY INTEGRATED** - Now uses real Supabase data
 - **Data Source:** `profiles` table with plant relationships
 
@@ -74,15 +79,17 @@ The SpecChem Safety LMS has undergone a complete design overhaul and is now read
 ## 2. Required Images, Illustrations, and Icons
 
 ### **Hero Section Images**
+
 - **Type:** Professional safety training illustrations
 - **Specifications:** 1200x600px, modern flat design style
 - **Content:** Industrial workers in safety gear, training scenarios
 - **Format:** SVG preferred for scalability
 
 ### **Course Thumbnail Images**
+
 - **Type:** Course-specific safety training visuals
 - **Specifications:** 400x300px, consistent aspect ratio
-- **Content:** 
+- **Content:**
   - Chemical safety: Hazmat suits, chemical containers
   - Equipment safety: Industrial machinery, safety protocols
   - Environmental safety: Environmental monitoring, compliance
@@ -90,9 +97,10 @@ The SpecChem Safety LMS has undergone a complete design overhaul and is now read
 - **Format:** JPG/PNG with WebP optimization
 
 ### **Category Icons**
+
 - **Type:** Vector icons for course categories
 - **Specifications:** 64x64px, consistent style
-- **Content:** 
+- **Content:**
   - Chemical Safety: Flask/beaker icon
   - Equipment Safety: Wrench/gear icon
   - Environmental Safety: Leaf/eco icon
@@ -100,18 +108,21 @@ The SpecChem Safety LMS has undergone a complete design overhaul and is now read
 - **Format:** SVG with consistent stroke width
 
 ### **User Avatar Placeholders**
+
 - **Type:** Generic user avatars
 - **Specifications:** 100x100px, circular
 - **Content:** Professional headshot silhouettes
 - **Format:** PNG with transparent background
 
 ### **Testimonial Images**
+
 - **Type:** Professional headshots
 - **Specifications:** 150x150px, circular
 - **Content:** Real user photos (with permission)
 - **Format:** JPG with consistent lighting
 
 ### **Background Patterns**
+
 - **Type:** Subtle geometric patterns
 - **Specifications:** Repeatable patterns
 - **Content:** Industrial/safety-themed geometric designs
@@ -124,16 +135,19 @@ The SpecChem Safety LMS has undergone a complete design overhaul and is now read
 ### **Current Database Content Analysis**
 
 #### **Courses Table Status**
+
 - **Total Courses:** 4 courses in database
 - **Published Status:** All courses marked as `is_published: false`
 - **Content Structure:** Proper slug-based routing implemented
 
 #### **Course Sections Status**
+
 - **Total Sections:** 9 sections across courses
 - **Content Blocks:** 13 content blocks available
 - **Quiz Questions:** 3 quiz questions implemented
 
 #### **Translation Support**
+
 - **Languages:** English (en), Spanish (es), French (fr), German (de)
 - **Translation Tables:** All content tables have translation support
 - **Current Status:** No translations populated yet
@@ -141,13 +155,15 @@ The SpecChem Safety LMS has undergone a complete design overhaul and is now read
 ### **Content Integration Requirements**
 
 #### **English Content (Primary)**
+
 - **Status:** ✅ Database structure ready
-- **Action Required:** 
+- **Action Required:**
   - Publish existing courses (`is_published: true`)
   - Populate missing course descriptions
   - Add proper course metadata
 
 #### **Spanish Content (Secondary)**
+
 - **Status:** ⚠️ Structure ready, content needed
 - **Action Required:**
   - Translate course titles and descriptions
@@ -156,6 +172,7 @@ The SpecChem Safety LMS has undergone a complete design overhaul and is now read
   - Test Spanish language switching
 
 #### **Content Block Rendering**
+
 - **Status:** ⚠️ Components created, integration needed
 - **Action Required:**
   - Implement content block renderer component
@@ -163,6 +180,7 @@ The SpecChem Safety LMS has undergone a complete design overhaul and is now read
   - Add proper styling for each content type
 
 #### **Quiz Integration**
+
 - **Status:** ⚠️ Database ready, UI integration needed
 - **Action Required:**
   - Create quiz component for different question types
@@ -193,16 +211,19 @@ The SpecChem Safety LMS has undergone a complete design overhaul and is now read
 ### **Critical Issues (Must Fix Before MVP)**
 
 #### **Authentication Issues**
+
 - **Issue:** User role mapping inconsistencies
 - **Impact:** Users may not see appropriate content
 - **Fix:** Align role enums between auth and profiles tables
 
 #### **Course Navigation**
+
 - **Issue:** Course learning page navigation not fully functional
 - **Impact:** Users cannot navigate between course modules
 - **Fix:** Implement proper module navigation logic
 
 #### **Progress Tracking**
+
 - **Issue:** User progress not being saved consistently
 - **Impact:** Users lose progress between sessions
 - **Fix:** Implement robust progress saving mechanism
@@ -210,11 +231,13 @@ The SpecChem Safety LMS has undergone a complete design overhaul and is now read
 ### **High Priority Issues**
 
 #### **Responsive Design**
+
 - **Issue:** Some components not fully responsive on mobile
 - **Impact:** Poor mobile user experience
 - **Fix:** Test and fix mobile layouts
 
 #### **Error Handling**
+
 - **Issue:** Insufficient error handling in data fetching
 - **Impact:** Poor user experience when errors occur
 - **Fix:** Add comprehensive error boundaries and fallbacks
@@ -222,11 +245,13 @@ The SpecChem Safety LMS has undergone a complete design overhaul and is now read
 ### **Medium Priority Issues**
 
 #### **Performance Optimization**
+
 - **Issue:** Large bundle sizes due to unused components
 - **Impact:** Slower loading times
 - **Fix:** Implement code splitting and lazy loading
 
 #### **Accessibility**
+
 - **Issue:** Missing ARIA labels and keyboard navigation
 - **Impact:** Poor accessibility compliance
 - **Fix:** Add proper accessibility attributes
@@ -234,6 +259,7 @@ The SpecChem Safety LMS has undergone a complete design overhaul and is now read
 ### **Low Priority Issues**
 
 #### **SEO Optimization**
+
 - **Issue:** Missing meta tags and structured data
 - **Impact:** Poor search engine visibility
 - **Fix:** Add proper SEO meta tags
@@ -261,14 +287,14 @@ Based on the Supabase Auth screenshot provided, here's how to create admin accou
 ```typescript
 // Use Supabase Admin API
 const { data, error } = await supabase.auth.admin.createUser({
-  email: 'admin@specchem.com',
-  password: 'secure-password-here',
+  email: "admin@specchem.com",
+  password: "secure-password-here",
   email_confirm: true,
   user_metadata: {
-    role: 'admin',
-    first_name: 'Admin',
-    last_name: 'User'
-  }
+    role: "admin",
+    first_name: "Admin",
+    last_name: "User",
+  },
 });
 ```
 
@@ -317,11 +343,13 @@ INSERT INTO public.profiles (
 ### **Admin Role Configuration**
 
 #### **Database Role Mapping**
+
 - **Supabase Auth Role:** `admin` (in user_metadata)
 - **Database Role:** `admin` (in profiles.role)
 - **Permissions:** Full access to all tables
 
 #### **Admin Capabilities**
+
 - **User Management:** Create, edit, delete users
 - **Course Management:** Create, edit, publish courses
 - **Plant Management:** Manage facility information
@@ -349,19 +377,22 @@ INSERT INTO public.profiles (
 ## 6. Deployment Status
 
 ### **GitHub Repository**
+
 - **Status:** ✅ **DEPLOYED**
 - **Repository:** Josh-SpecChem/specchem-safety-v2-main
 - **Latest Commit:** Modern LMS design system implementation
 - **Branch:** main
 
 ### **Vercel Deployment**
+
 - **Status:** ⚠️ **PENDING**
-- **Action Required:** 
+- **Action Required:**
   - Connect GitHub repository to Vercel
   - Configure environment variables
   - Set up automatic deployments
 
 ### **Environment Configuration**
+
 - **Required Variables:**
   - `NEXT_PUBLIC_SUPABASE_URL`
   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
@@ -372,6 +403,7 @@ INSERT INTO public.profiles (
 ## 7. MVP Readiness Assessment
 
 ### **Ready for Core User Testing**
+
 - ✅ **Authentication System:** Fully functional
 - ✅ **User Management:** Complete with real data
 - ✅ **Course Navigation:** Basic functionality working
@@ -379,12 +411,14 @@ INSERT INTO public.profiles (
 - ✅ **Database Integration:** Core functionality connected
 
 ### **Areas Needing Attention Before Full Launch**
+
 - ⚠️ **Content Population:** Need to publish and populate courses
 - ⚠️ **Progress Tracking:** Need robust progress saving
 - ⚠️ **Quiz Functionality:** Need to implement quiz components
 - ⚠️ **Spanish Translation:** Need to populate Spanish content
 
 ### **Recommended MVP Testing Scope**
+
 1. **User Registration and Login**
 2. **Course Browsing and Enrollment**
 3. **Basic Course Navigation**
@@ -396,6 +430,7 @@ INSERT INTO public.profiles (
 ## 8. Next Steps and Recommendations
 
 ### **Immediate Actions (Next 1-2 weeks)**
+
 1. **Deploy to Vercel** and configure environment variables
 2. **Create admin accounts** using the methods outlined above
 3. **Publish existing courses** and test content rendering
@@ -403,6 +438,7 @@ INSERT INTO public.profiles (
 5. **Test with core users** and gather feedback
 
 ### **Short-term Goals (Next month)**
+
 1. **Populate Spanish translations** for bilingual support
 2. **Implement robust progress tracking** across all courses
 3. **Add multimedia content blocks** for richer course content
@@ -410,6 +446,7 @@ INSERT INTO public.profiles (
 5. **Complete accessibility compliance** for broader user access
 
 ### **Long-term Vision (Next quarter)**
+
 1. **Advanced analytics and reporting** for training insights
 2. **Mobile app development** for offline learning
 3. **Integration with HR systems** for automated enrollment
