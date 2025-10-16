@@ -1,0 +1,18 @@
+{
+  "/api/content-blocks/route": "app/api/content-blocks/route.js",
+  "/api/content-interactions/route": "app/api/content-interactions/route.js",
+  "/api/course-sections/route": "app/api/course-sections/route.js",
+  "/api/courses/route": "app/api/courses/route.js",
+  "/api/public/content-blocks/route": "app/api/public/content-blocks/route.js",
+  "/api/public/course-sections/route": "app/api/public/course-sections/route.js",
+  "/api/public/courses/route": "app/api/public/courses/route.js",
+  "/api/public/quiz-questions/route": "app/api/public/quiz-questions/route.js",
+  "/api/quiz-questions/route": "app/api/quiz-questions/route.js",
+  "/api/user-progress/route": "app/api/user-progress/route.js",
+  "/courses/[slug]/learn/page": "app/courses/[slug]/learn/page.js",
+  "/courses/[slug]/page": "app/courses/[slug]/page.js",
+  "/courses/page": "app/courses/page.js",
+  "/dashboard/page": "app/dashboard/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/page": "app/page.js"
+}

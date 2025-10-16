@@ -1,0 +1,19 @@
+{
+  "pages": {
+    "/enrollments/page": [
+      "static/chunks/48796fcff804b0d1.js",
+      "static/chunks/2298bc66cf7be31b.js",
+      "static/chunks/7a3ea84d473fda7b.css",
+      "static/chunks/ee65fce97d476917.js",
+      "static/chunks/1d8c5449ba154b00.js",
+      "static/chunks/5465f3c4f362db55.js",
+      "static/chunks/56b03c79f2259c2c.js",
+      "static/chunks/e570a039f68e7581.js",
+      "static/chunks/ebf4d698258fec8b.js",
+      "static/chunks/ebaed301b68df302.js",
+      "static/chunks/753e53d64114daaf.js",
+      "static/chunks/683c92afea2fdb82.js",
+      "static/chunks/turbopack-1f997adf7b746d23.js"
+    ]
+  }
+}

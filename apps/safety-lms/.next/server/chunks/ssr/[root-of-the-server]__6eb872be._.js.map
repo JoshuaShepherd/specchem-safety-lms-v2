@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 3, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"","debugId":null}},
+    {"offset": {"line": 15, "column": 0}, "map": {"version":3,"sources":["file:///Users/joshshepherd/Projects/specchem-safety-v2-main/apps/safety-lms/src/app/page.tsx"],"sourcesContent":["import { redirect } from \"next/navigation\";\n\nexport default function Home() {\n  // Redirect to login page since this is an authenticated-only LMS\n  redirect(\"/auth/login\");\n}\n"],"names":[],"mappings":";;;;AAAA;AAAA;;AAEe,SAAS;IACtB,iEAAiE;IACjE,IAAA,gUAAQ,EAAC;AACX","debugId":null}}]
+}

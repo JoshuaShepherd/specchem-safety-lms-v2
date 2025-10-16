@@ -1,0 +1,20 @@
+{
+  "pages": {
+    "/plants/page": [
+      "static/chunks/48796fcff804b0d1.js",
+      "static/chunks/2298bc66cf7be31b.js",
+      "static/chunks/7a3ea84d473fda7b.css",
+      "static/chunks/ee65fce97d476917.js",
+      "static/chunks/9e499fe843d31fb7.js",
+      "static/chunks/7a9c44ac69f968e7.js",
+      "static/chunks/262ec563411ea344.js",
+      "static/chunks/ca2609a1b083b7af.js",
+      "static/chunks/e570a039f68e7581.js",
+      "static/chunks/ebf4d698258fec8b.js",
+      "static/chunks/ebaed301b68df302.js",
+      "static/chunks/753e53d64114daaf.js",
+      "static/chunks/683c92afea2fdb82.js",
+      "static/chunks/turbopack-1f997adf7b746d23.js"
+    ]
+  }
+}
