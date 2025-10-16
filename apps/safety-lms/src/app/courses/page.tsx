@@ -66,19 +66,21 @@ export default function CoursesPage() {
   // Show loading state
   if (loading) {
     return (
-      <div className="space-y-6">
+      <div className="space-y-8">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="heading-1">Safety Training Courses</h1>
-            <p className="body-large">
+            <h1 className="text-3xl font-bold text-neutral-900">
+              Safety Training Courses
+            </h1>
+            <p className="text-neutral-600 mt-2">
               Comprehensive safety training programs for industrial excellence
             </p>
           </div>
         </div>
         <div className="flex items-center justify-center py-12">
           <div className="flex items-center gap-2">
-            <Loader2 className="h-6 w-6 animate-spin" />
-            <span>Loading courses...</span>
+            <Loader2 className="h-6 w-6 animate-spin text-primary-600" />
+            <span className="text-neutral-600">Loading courses...</span>
           </div>
         </div>
       </div>
@@ -88,19 +90,23 @@ export default function CoursesPage() {
   // Show error state
   if (error) {
     return (
-      <div className="space-y-6">
+      <div className="space-y-8">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="heading-1">Safety Training Courses</h1>
-            <p className="body-large">
+            <h1 className="text-3xl font-bold text-neutral-900">
+              Safety Training Courses
+            </h1>
+            <p className="text-neutral-600 mt-2">
               Comprehensive safety training programs for industrial excellence
             </p>
           </div>
         </div>
         <div className="text-center py-12">
           <AlertTriangle className="h-12 w-12 text-red-500 mx-auto mb-4" />
-          <h3 className="text-lg font-medium mb-2">Error Loading Courses</h3>
-          <p className="text-muted-foreground mb-4">{error}</p>
+          <h3 className="text-lg font-medium mb-2 text-neutral-900">
+            Error Loading Courses
+          </h3>
+          <p className="text-neutral-600 mb-4">{error}</p>
           <Button onClick={() => window.location.reload()}>Try Again</Button>
         </div>
       </div>
@@ -129,26 +135,26 @@ export default function CoursesPage() {
   const getStatusColor = (status: string) => {
     switch (status) {
       case "completed":
-        return "bg-green-500";
+        return "bg-accent-green-500";
       case "in_progress":
-        return "bg-blue-500";
+        return "bg-primary-500";
       case "not_started":
-        return "bg-gray-300";
+        return "bg-neutral-300";
       default:
-        return "bg-gray-300";
+        return "bg-neutral-300";
     }
   };
 
   const getDifficultyColor = (difficulty: string) => {
     switch (difficulty) {
       case "Beginner":
-        return "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200";
+        return "bg-accent-green-100 text-accent-green-800";
       case "Intermediate":
-        return "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200";
+        return "bg-accent-yellow-100 text-accent-yellow-800";
       case "Advanced":
-        return "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200";
+        return "bg-red-100 text-red-800";
       default:
-        return "bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200";
+        return "bg-neutral-100 text-neutral-800";
     }
   };
 
@@ -158,16 +164,18 @@ export default function CoursesPage() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="heading-1">Safety Training Courses</h1>
-          <p className="body-large">
+          <h1 className="text-3xl font-bold text-neutral-900">
+            Safety Training Courses
+          </h1>
+          <p className="text-neutral-600 mt-2">
             Comprehensive safety training programs for industrial excellence
           </p>
         </div>
-        <Button className="flex items-center gap-2">
+        <Button className="flex items-center gap-2" variant="outline">
           <Filter className="h-4 w-4" />
           Advanced Filters
         </Button>
@@ -176,7 +184,7 @@ export default function CoursesPage() {
       {/* Search and Filters */}
       <div className="flex flex-col sm:flex-row gap-4">
         <div className="relative flex-1">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-neutral-500" />
           <Input
             placeholder="Search courses..."
             value={searchTerm}
@@ -233,11 +241,11 @@ export default function CoursesPage() {
 
       {/* Results Count */}
       <div className="flex items-center justify-between">
-        <p className="text-sm text-muted-foreground">
+        <p className="text-sm text-neutral-600">
           Showing {filteredCourses.length} of {courses.length} courses
         </p>
         <div className="flex items-center gap-2">
-          <span className="text-sm text-muted-foreground">Sort by:</span>
+          <span className="text-sm text-neutral-600">Sort by:</span>
           <Select defaultValue="relevance">
             <SelectTrigger className="w-40">
               <SelectValue />
@@ -260,13 +268,13 @@ export default function CoursesPage() {
           return (
             <Card
               key={course.id}
-              className="course-card group cursor-pointer hover:shadow-lg transition-shadow"
+              className="group cursor-pointer hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
               onClick={() => router.push(`/courses/${course.slug}`)}
             >
               <CardHeader className="p-0">
                 <div className="relative">
-                  <div className="h-48 bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
-                    <CategoryIcon className="h-16 w-16 text-primary/60" />
+                  <div className="h-48 bg-gradient-to-br from-primary-100 to-secondary-100 flex items-center justify-center">
+                    <CategoryIcon className="h-16 w-16 text-primary-600" />
                   </div>
                   <div className="absolute top-4 left-4 flex gap-2">
                     <Badge className={getDifficultyColor(course.difficulty)}>
@@ -274,7 +282,7 @@ export default function CoursesPage() {
                     </Badge>
                     <Badge
                       variant="outline"
-                      className="flex items-center gap-1"
+                      className="flex items-center gap-1 bg-white/90"
                     >
                       <Globe className="h-3 w-3" />
                       {course.language}
@@ -290,15 +298,15 @@ export default function CoursesPage() {
               <CardContent className="p-6">
                 <div className="space-y-4">
                   <div>
-                    <CardTitle className="text-lg line-clamp-2 group-hover:text-primary transition-colors">
+                    <CardTitle className="text-lg line-clamp-2 group-hover:text-primary-600 transition-colors">
                       {course.title}
                     </CardTitle>
-                    <CardDescription className="line-clamp-2 mt-2">
+                    <CardDescription className="line-clamp-2 mt-2 text-neutral-600">
                       {course.description}
                     </CardDescription>
                   </div>
 
-                  <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                  <div className="flex items-center gap-4 text-sm text-neutral-500">
                     <div className="flex items-center gap-1">
                       <Clock className="h-4 w-4" />
                       {course.duration}
@@ -308,7 +316,7 @@ export default function CoursesPage() {
                       {course.enrolledUsers}
                     </div>
                     <div className="flex items-center gap-1">
-                      <Star className="h-4 w-4 fill-current text-yellow-500" />
+                      <Star className="h-4 w-4 fill-accent-yellow-500 text-accent-yellow-500" />
                       {course.rating}
                     </div>
                   </div>
@@ -316,8 +324,10 @@ export default function CoursesPage() {
                   {course.progress > 0 && (
                     <div className="space-y-2">
                       <div className="flex justify-between text-sm">
-                        <span>Progress</span>
-                        <span>{course.progress}%</span>
+                        <span className="text-neutral-600">Progress</span>
+                        <span className="text-neutral-900 font-medium">
+                          {course.progress}%
+                        </span>
                       </div>
                       <Progress value={course.progress} className="h-2" />
                     </div>
@@ -325,9 +335,7 @@ export default function CoursesPage() {
 
                   {course.prerequisites.length > 0 && (
                     <div className="text-sm">
-                      <p className="text-muted-foreground mb-1">
-                        Prerequisites:
-                      </p>
+                      <p className="text-neutral-600 mb-1">Prerequisites:</p>
                       <div className="flex flex-wrap gap-1">
                         {course.prerequisites.map((prereq, index) => (
                           <Badge
@@ -343,7 +351,7 @@ export default function CoursesPage() {
                   )}
 
                   <div className="flex items-center justify-between pt-2">
-                    <div className="text-sm text-muted-foreground">
+                    <div className="text-sm text-neutral-500">
                       <p>Instructor: {course.instructor}</p>
                     </div>
                     <Button
@@ -385,9 +393,11 @@ export default function CoursesPage() {
       {/* No Results */}
       {filteredCourses.length === 0 && (
         <div className="text-center py-12">
-          <BookOpen className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-          <h3 className="text-lg font-medium mb-2">No courses found</h3>
-          <p className="text-muted-foreground">
+          <BookOpen className="h-12 w-12 text-neutral-400 mx-auto mb-4" />
+          <h3 className="text-lg font-medium mb-2 text-neutral-900">
+            No courses found
+          </h3>
+          <p className="text-neutral-600">
             Try adjusting your search criteria or filters
           </p>
         </div>

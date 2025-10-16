@@ -21,9 +21,10 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // SpecChem brand colors
+        // Modern LMS Colors
         primary: colors.primary.blue,
-        secondary: colors.secondary,
+        secondary: colors.primary.purple,
+        accent: colors.accent,
         semantic: colors.semantic,
         neutral: colors.neutral,
 
@@ -96,6 +97,35 @@ const config: Config = {
       // Animation from motion tokens
       transitionDuration: motionTokens.duration,
       transitionTimingFunction: motionTokens.easing,
+
+      // Custom utilities for modern LMS components
+      animation: {
+        "fade-in": "fadeIn 0.5s ease-in-out",
+        "slide-up": "slideUp 0.3s ease-out",
+        "scale-in": "scaleIn 0.2s ease-out",
+        "bounce-in": "bounceIn 0.6s ease-out",
+      },
+
+      keyframes: {
+        fadeIn: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+        slideUp: {
+          "0%": { transform: "translateY(20px)", opacity: "0" },
+          "100%": { transform: "translateY(0)", opacity: "1" },
+        },
+        scaleIn: {
+          "0%": { transform: "scale(0.95)", opacity: "0" },
+          "100%": { transform: "scale(1)", opacity: "1" },
+        },
+        bounceIn: {
+          "0%": { transform: "scale(0.3)", opacity: "0" },
+          "50%": { transform: "scale(1.05)" },
+          "70%": { transform: "scale(0.9)" },
+          "100%": { transform: "scale(1)", opacity: "1" },
+        },
+      },
 
       // Custom utilities for layout spacing
       gap: {

@@ -1,4 +1,5 @@
 {
+  "/_not-found/page": "app/_not-found/page.js",
   "/api/content-blocks/route": "app/api/content-blocks/route.js",
   "/api/content-interactions/route": "app/api/content-interactions/route.js",
   "/api/course-sections/route": "app/api/course-sections/route.js",
@@ -14,5 +15,9 @@
   "/courses/page": "app/courses/page.js",
   "/dashboard/page": "app/dashboard/page.js",
   "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/page": "app/page.js"
+  "/page": "app/page.js",
+  "/plants/page": "app/plants/page.js",
+  "/reports/page": "app/reports/page.js",
+  "/settings/page": "app/settings/page.js",
+  "/users/page": "app/users/page.js"
 }

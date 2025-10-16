@@ -109,10 +109,12 @@ export default function CourseLearningPage() {
 
   if (!course) {
     return (
-      <div className="text-center py-section-loose">
-        <BookOpen className="h-12 w-12 text-muted-foreground mx-auto mb-component-normal" />
-        <h3 className="text-lg font-medium mb-2">Course Not Found</h3>
-        <p className="text-muted-foreground mb-component-normal">
+      <div className="text-center py-12">
+        <BookOpen className="h-12 w-12 text-neutral-400 mx-auto mb-4" />
+        <h3 className="text-lg font-medium mb-2 text-neutral-900 dark:text-neutral-100">
+          Course Not Found
+        </h3>
+        <p className="text-neutral-600 dark:text-neutral-400 mb-4">
           The course you're looking for doesn't exist or has been removed.
         </p>
         <Button onClick={() => router.push("/courses")}>Back to Courses</Button>
@@ -121,10 +123,10 @@ export default function CourseLearningPage() {
   }
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-4 gap-grid-relaxed">
+    <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
       {/* Course Navigation Sidebar */}
       <div className="lg:col-span-1">
-        <div className="sticky top-section-normal">
+        <div className="sticky top-8">
           <CourseNavigation
             courseTitle={course.title}
             modules={mockModules}
@@ -135,14 +137,14 @@ export default function CourseLearningPage() {
       </div>
 
       {/* Main Content */}
-      <div className="lg:col-span-3 space-y-section-tight">
+      <div className="lg:col-span-3 space-y-8">
         {/* Course Header */}
-        <div className="flex items-center gap-inline-normal mb-component-normal">
+        <div className="flex items-center gap-4 mb-6">
           <Button
             variant="ghost"
             size="sm"
             onClick={() => router.back()}
-            className="flex items-center gap-inline-tight"
+            className="flex items-center gap-2"
           >
             <ArrowLeft className="h-4 w-4" />
             Back
@@ -150,66 +152,72 @@ export default function CourseLearningPage() {
         </div>
 
         {/* Current Module Content */}
-        <Card>
+        <Card className="hover:shadow-lg transition-shadow">
           <CardHeader>
             <div className="flex items-center justify-between">
-              <div className="flex items-center gap-inline-normal">
-                <PlayCircle className="h-6 w-6 text-primary" />
+              <div className="flex items-center gap-4">
+                <PlayCircle className="h-6 w-6 text-primary-600" />
                 <div>
-                  <CardTitle>Safe Handling Procedures</CardTitle>
-                  <p className="text-sm text-muted-foreground mt-1">
+                  <CardTitle className="text-neutral-900 dark:text-neutral-100">
+                    Safe Handling Procedures
+                  </CardTitle>
+                  <p className="text-sm text-neutral-600 dark:text-neutral-400 mt-1">
                     Module 3 of 6 • Video • 60 minutes
                   </p>
                 </div>
               </div>
-              <div className="flex items-center gap-inline-relaxed text-sm text-muted-foreground">
+              <div className="flex items-center gap-4 text-sm text-neutral-600 dark:text-neutral-400">
                 <Clock className="h-4 w-4" />
                 <span>45 minutes remaining</span>
               </div>
             </div>
           </CardHeader>
-          <CardContent className="space-y-component-normal">
+          <CardContent className="space-y-6">
             {/* Progress Bar */}
-            <div className="space-y-1">
+            <div className="space-y-2">
               <div className="flex justify-between text-sm">
-                <span>Module Progress</span>
-                <span>65%</span>
+                <span className="text-neutral-600 dark:text-neutral-400">
+                  Module Progress
+                </span>
+                <span className="font-medium text-neutral-900 dark:text-neutral-100">
+                  65%
+                </span>
               </div>
               <Progress value={65} className="h-2" />
             </div>
 
             {/* Video Player Placeholder */}
-            <div className="aspect-video bg-muted rounded-lg flex items-center justify-center">
+            <div className="aspect-video bg-neutral-100 dark:bg-neutral-800 rounded-lg flex items-center justify-center">
               <div className="text-center">
-                <PlayCircle className="h-16 w-16 text-muted-foreground mx-auto mb-component-tight" />
-                <p className="text-muted-foreground">
+                <PlayCircle className="h-16 w-16 text-neutral-400 dark:text-neutral-500 mx-auto mb-4" />
+                <p className="text-neutral-600 dark:text-neutral-400">
                   Video player would be embedded here
                 </p>
               </div>
             </div>
 
             {/* Module Content */}
-            <div className="space-y-component-normal">
+            <div className="space-y-6">
               <div>
-                <h3 className="text-lg font-semibold mb-component-tight">
+                <h3 className="text-lg font-semibold mb-4 text-neutral-900 dark:text-neutral-100">
                   Learning Objectives
                 </h3>
-                <ul className="space-y-stack-tight">
-                  <li className="flex items-start gap-inline-relaxed">
-                    <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm">
+                <ul className="space-y-3">
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="h-4 w-4 text-accent-green-600 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-neutral-700 dark:text-neutral-300">
                       Understand proper PPE requirements
                     </span>
                   </li>
-                  <li className="flex items-start gap-inline-relaxed">
-                    <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm">
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="h-4 w-4 text-accent-green-600 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-neutral-700 dark:text-neutral-300">
                       Learn safe lifting and carrying techniques
                     </span>
                   </li>
-                  <li className="flex items-start gap-inline-relaxed">
-                    <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm">
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="h-4 w-4 text-accent-green-600 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm text-neutral-700 dark:text-neutral-300">
                       Identify proper storage and labeling procedures
                     </span>
                   </li>
@@ -217,46 +225,46 @@ export default function CourseLearningPage() {
               </div>
 
               <div>
-                <h3 className="text-lg font-semibold mb-component-tight">
+                <h3 className="text-lg font-semibold mb-4 text-neutral-900 dark:text-neutral-100">
                   Key Topics Covered
                 </h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-component-normal">
-                  <div className="space-y-stack-tight">
-                    <div className="flex items-center gap-inline-tight">
-                      <FileText className="h-4 w-4 text-primary" />
-                      <span className="text-sm font-medium">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-3">
+                      <FileText className="h-4 w-4 text-primary-600" />
+                      <span className="text-sm font-medium text-neutral-700 dark:text-neutral-300">
                         Personal Protective Equipment
                       </span>
                     </div>
-                    <div className="flex items-center gap-inline-tight">
-                      <FileText className="h-4 w-4 text-primary" />
-                      <span className="text-sm font-medium">
+                    <div className="flex items-center gap-3">
+                      <FileText className="h-4 w-4 text-primary-600" />
+                      <span className="text-sm font-medium text-neutral-700 dark:text-neutral-300">
                         Safe Handling Techniques
                       </span>
                     </div>
-                    <div className="flex items-center gap-inline-tight">
-                      <FileText className="h-4 w-4 text-primary" />
-                      <span className="text-sm font-medium">
+                    <div className="flex items-center gap-3">
+                      <FileText className="h-4 w-4 text-primary-600" />
+                      <span className="text-sm font-medium text-neutral-700 dark:text-neutral-300">
                         Storage Requirements
                       </span>
                     </div>
                   </div>
-                  <div className="space-y-stack-tight">
-                    <div className="flex items-center gap-inline-tight">
-                      <FileText className="h-4 w-4 text-primary" />
-                      <span className="text-sm font-medium">
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-3">
+                      <FileText className="h-4 w-4 text-primary-600" />
+                      <span className="text-sm font-medium text-neutral-700 dark:text-neutral-300">
                         Labeling and Documentation
                       </span>
                     </div>
-                    <div className="flex items-center gap-inline-tight">
-                      <FileText className="h-4 w-4 text-primary" />
-                      <span className="text-sm font-medium">
+                    <div className="flex items-center gap-3">
+                      <FileText className="h-4 w-4 text-primary-600" />
+                      <span className="text-sm font-medium text-neutral-700 dark:text-neutral-300">
                         Transportation Safety
                       </span>
                     </div>
-                    <div className="flex items-center gap-inline-tight">
-                      <FileText className="h-4 w-4 text-primary" />
-                      <span className="text-sm font-medium">
+                    <div className="flex items-center gap-3">
+                      <FileText className="h-4 w-4 text-primary-600" />
+                      <span className="text-sm font-medium text-neutral-700 dark:text-neutral-300">
                         Cleanup Procedures
                       </span>
                     </div>
@@ -266,25 +274,22 @@ export default function CourseLearningPage() {
             </div>
 
             {/* Action Buttons */}
-            <div className="flex items-center justify-between pt-component-normal border-t">
+            <div className="flex items-center justify-between pt-6 border-t border-neutral-200 dark:border-neutral-700">
               <Button
                 variant="outline"
                 disabled={true} // Previous module completed
-                className="flex items-center gap-inline-tight"
+                className="flex items-center gap-2"
               >
                 <ArrowLeft className="h-4 w-4" />
                 Previous Module
               </Button>
 
-              <div className="flex items-center gap-inline-normal">
-                <Button
-                  variant="outline"
-                  className="flex items-center gap-inline-tight"
-                >
+              <div className="flex items-center gap-4">
+                <Button variant="outline" className="flex items-center gap-2">
                   <FileText className="h-4 w-4" />
                   Take Notes
                 </Button>
-                <Button className="flex items-center gap-inline-tight">
+                <Button className="flex items-center gap-2">
                   Mark Complete
                   <CheckCircle className="h-4 w-4" />
                 </Button>

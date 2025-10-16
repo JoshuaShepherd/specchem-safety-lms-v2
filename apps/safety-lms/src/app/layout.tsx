@@ -41,16 +41,14 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="min-h-screen bg-background">
+          <div className="min-h-screen bg-white">
             <MainNav />
-            <div className="border-b">
-              <div className="container mx-auto px-container-mobile sm:px-container-tablet lg:px-container-desktop">
-                <Breadcrumb className="py-component-tight" />
+            <div className="border-b bg-neutral-50">
+              <div className="container mx-auto px-4">
+                <Breadcrumb className="py-4" />
               </div>
             </div>
-            <main className="container mx-auto px-container-mobile sm:px-container-tablet lg:px-container-desktop py-section-normal">
-              {children}
-            </main>
+            <main className="container mx-auto px-4 py-8">{children}</main>
           </div>
         </ThemeProvider>
       </body>

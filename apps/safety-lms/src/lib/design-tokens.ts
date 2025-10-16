@@ -1,6 +1,6 @@
 /**
  * SpecChem Safety LMS Design Tokens
- * Based on SpecChem Brand Guidelines
+ * Modern LMS Design System Implementation
  */
 
 // =============================================================================
@@ -8,59 +8,83 @@
 // =============================================================================
 
 export const colors = {
-  // Primary Brand Colors
+  // Modern LMS Color Palette
   primary: {
     blue: {
-      50: "#E6F2FF",
-      100: "#CCE5FF",
-      200: "#99CCFF",
-      300: "#66B3FF",
-      400: "#3399FF",
-      500: "#013A81", // SpecChem Blue
-      600: "#012E68",
-      700: "#01224F",
-      800: "#011636",
-      900: "#000A1D",
+      50: "#EFF6FF",
+      100: "#DBEAFE",
+      200: "#BFDBFE",
+      300: "#93C5FD",
+      400: "#60A5FA",
+      500: "#3B82F6", // Primary Blue
+      600: "#2563EB",
+      700: "#1D4ED8",
+      800: "#1E40AF",
+      900: "#1E3A8A",
     },
-    yellow: {
-      50: "#FFFBF0",
-      100: "#FFF7E0",
-      200: "#FFEFC1",
-      300: "#FFE782",
-      400: "#FFDF43",
-      500: "#DEB408", // SpecChem Yellow
-      600: "#C2A007",
-      700: "#A68C06",
-      800: "#8A7805",
-      900: "#6E6404",
+    purple: {
+      50: "#FAF5FF",
+      100: "#F3E8FF",
+      200: "#E9D5FF",
+      300: "#D8B4FE",
+      400: "#C084FC",
+      500: "#A855F7", // Secondary Purple
+      600: "#9333EA",
+      700: "#7C3AED",
+      800: "#6B21A8",
+      900: "#581C87",
+    },
+    indigo: {
+      50: "#EEF2FF",
+      100: "#E0E7FF",
+      200: "#C7D2FE",
+      300: "#A5B4FC",
+      400: "#818CF8",
+      500: "#6366F1", // Deep Indigo
+      600: "#4F46E5",
+      700: "#4338CA",
+      800: "#3730A3",
+      900: "#312E81",
     },
   },
 
-  // Secondary Brand Colors
-  secondary: {
-    darkBlue: {
-      50: "#E6E7F0",
-      100: "#CCCFE1",
-      200: "#999FC3",
-      300: "#666FA5",
-      400: "#333F87",
-      500: "#020747", // Dark Blue
-      600: "#02063A",
-      700: "#01052D",
-      800: "#010420",
-      900: "#000313",
+  // Accent Colors for Differentiation
+  accent: {
+    orange: {
+      50: "#FFF7ED",
+      100: "#FFEDD5",
+      200: "#FED7AA",
+      300: "#FDBA74",
+      400: "#FB923C",
+      500: "#F97316", // Vibrant Orange
+      600: "#EA580C",
+      700: "#C2410C",
+      800: "#9A3412",
+      900: "#7C2D12",
     },
-    coolGrey: {
-      50: "#F5F5F5",
-      100: "#EBEBEB",
-      200: "#D7D7D7",
-      300: "#C3C3C3",
-      400: "#AFAFAF",
-      500: "#8D8A88", // Cool Grey
-      600: "#716E6C",
-      700: "#555250",
-      800: "#393634",
-      900: "#1D1A18",
+    green: {
+      50: "#F0FDF4",
+      100: "#DCFCE7",
+      200: "#BBF7D0",
+      300: "#86EFAC",
+      400: "#4ADE80",
+      500: "#22C55E", // Success Green
+      600: "#16A34A",
+      700: "#15803D",
+      800: "#166534",
+      900: "#14532D",
+    },
+    yellow: {
+      50: "#FEFCE8",
+      100: "#FEF3C7",
+      200: "#FDE68A",
+      300: "#FCD34D",
+      400: "#FBBF24",
+      500: "#F59E0B", // Warning Yellow
+      600: "#D97706",
+      700: "#B45309",
+      800: "#92400E",
+      900: "#78350F",
     },
   },
 
@@ -140,8 +164,8 @@ export const colors = {
 
 export const typography = {
   fontFamily: {
-    primary: ["Futura PT", "system-ui", "sans-serif"],
-    secondary: ["AdelleSans", "system-ui", "sans-serif"],
+    primary: ["Inter", "system-ui", "sans-serif"],
+    secondary: ["Poppins", "system-ui", "sans-serif"],
     mono: ["SF Mono", "Monaco", "Inconsolata", "Roboto Mono", "monospace"],
   },
 
@@ -154,11 +178,11 @@ export const typography = {
     "2xl": ["1.5rem", { lineHeight: "2rem" }], // 24px
     "3xl": ["1.875rem", { lineHeight: "2.25rem" }], // 30px
     "4xl": ["2.25rem", { lineHeight: "2.5rem" }], // 36px
-    "5xl": ["3rem", { lineHeight: "1" }], // 48px
-    "6xl": ["3.75rem", { lineHeight: "1" }], // 60px
-    "7xl": ["4.5rem", { lineHeight: "1" }], // 72px
-    "8xl": ["6rem", { lineHeight: "1" }], // 96px
-    "9xl": ["8rem", { lineHeight: "1" }], // 128px
+    "5xl": ["3rem", { lineHeight: "1.1" }], // 48px
+    "6xl": ["3.75rem", { lineHeight: "1.1" }], // 60px
+    "7xl": ["4.5rem", { lineHeight: "1.1" }], // 72px
+    "8xl": ["6rem", { lineHeight: "1.1" }], // 96px
+    "9xl": ["8rem", { lineHeight: "1.1" }], // 128px
   },
 
   fontWeight: {
@@ -439,6 +463,56 @@ export const componentTokens = {
       tablet: spacing[6], // 24px
       desktop: spacing[8], // 32px
     },
+  },
+
+  // Enhanced Modern LMS Component Tokens
+  modernButton: {
+    height: {
+      sm: "2rem", // 32px
+      md: "2.5rem", // 40px
+      lg: "3rem", // 48px
+      xl: "3.5rem", // 56px
+    },
+    padding: {
+      sm: `${spacing[2]} ${spacing[4]}`, // 8px 16px
+      md: `${spacing[3]} ${spacing[6]}`, // 12px 24px
+      lg: `${spacing[4]} ${spacing[8]}`, // 16px 32px
+      xl: `${spacing[5]} ${spacing[10]}`, // 20px 40px
+    },
+    borderRadius: {
+      sm: borderRadius.md, // 6px
+      md: borderRadius.lg, // 8px
+      lg: borderRadius.xl, // 12px
+      xl: borderRadius["2xl"], // 16px
+    },
+  },
+
+  modernCard: {
+    padding: {
+      sm: spacing[4], // 16px
+      md: spacing[6], // 24px
+      lg: spacing[8], // 32px
+    },
+    borderRadius: borderRadius.xl, // 12px
+    shadow: {
+      sm: shadows.sm,
+      md: shadows.md,
+      lg: shadows.lg,
+    },
+  },
+
+  courseCard: {
+    imageHeight: "200px",
+    borderRadius: borderRadius.xl, // 12px
+    padding: spacing[6], // 24px
+    gap: spacing[4], // 16px
+  },
+
+  statsCard: {
+    padding: spacing[8], // 32px
+    borderRadius: borderRadius["2xl"], // 16px
+    iconSize: "3rem", // 48px
+    numberSize: "3rem", // 48px
   },
 } as const;
 

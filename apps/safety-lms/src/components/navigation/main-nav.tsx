@@ -155,227 +155,220 @@ export function MainNav({ className }: MainNavProps) {
   return (
     <nav
       className={cn(
-        "border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50",
+        "sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60",
         className
       )}
     >
-      <div className="container mx-auto px-container-mobile sm:px-container-tablet lg:px-container-desktop">
-        <div className="flex h-navigation-desktop mobile:h-navigation-mobile items-center justify-between">
-          {/* Logo and Brand */}
-          <div className="flex items-center gap-inline-normal">
-            <Link
-              href="/dashboard"
-              className="flex items-center gap-inline-tight"
-            >
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-                <Shield className="h-5 w-5" />
-              </div>
-              <div className="hidden sm:block">
-                <div className="text-lg font-semibold">SpecChem Safety</div>
-                <div className="text-xs text-muted-foreground">
-                  Learning Management System
-                </div>
-              </div>
-            </Link>
-          </div>
+      <div className="container mx-auto flex h-16 items-center justify-between px-4">
+        {/* Logo and Brand */}
+        <div className="flex items-center space-x-2">
+          <Link href="/dashboard" className="flex items-center space-x-2">
+            <div className="h-8 w-8 rounded-lg bg-gradient-to-r from-primary-500 to-secondary-500 flex items-center justify-center">
+              <Shield className="h-5 w-5 text-white" />
+            </div>
+            <div className="hidden sm:block">
+              <span className="text-xl font-bold text-neutral-900">
+                SpecChem Safety
+              </span>
+            </div>
+          </Link>
+        </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex lg:items-center lg:gap-navigation-group">
-            {filteredNavigation.map(item => {
-              const isActive =
-                pathname === item.href || pathname.startsWith(item.href + "/");
-              return (
-                <Link key={item.name} href={item.href}>
-                  <Button
-                    variant={isActive ? "secondary" : "ghost"}
-                    size="sm"
-                    className={cn(
-                      "flex items-center gap-navigation-item px-navigation-item",
-                      isActive && "bg-accent text-accent-foreground"
-                    )}
-                  >
-                    <item.icon className="h-4 w-4" />
-                    <span className="hidden xl:inline">{item.name}</span>
-                  </Button>
-                </Link>
-              );
-            })}
-          </div>
-
-          {/* Right Side Actions */}
-          <div className="flex items-center gap-inline-tight">
-            {/* User Role Badge */}
-            {userRole && (
-              <div className="hidden md:flex items-center gap-inline-tight px-component-tight py-1 rounded-md bg-muted/50">
-                <UserCheck className="h-4 w-4 text-muted-foreground" />
-                <span className="text-sm text-muted-foreground">
-                  {getRoleDisplayName(userRole)}
-                </span>
-              </div>
-            )}
-
-            {/* Theme Toggle */}
-            <ModeToggle />
-
-            {/* User Menu */}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex items-center space-x-8">
+          {filteredNavigation.map(item => {
+            const isActive =
+              pathname === item.href || pathname.startsWith(item.href + "/");
+            return (
+              <Link key={item.name} href={item.href}>
                 <Button
-                  variant="ghost"
-                  className="relative h-8 w-8 rounded-full"
+                  variant={isActive ? "secondary" : "ghost"}
+                  size="sm"
+                  className={cn(
+                    "text-sm font-medium transition-colors",
+                    isActive
+                      ? "bg-primary-100 text-primary-600"
+                      : "text-neutral-600 hover:text-neutral-900"
+                  )}
                 >
-                  <Avatar className="h-8 w-8">
+                  <item.icon className="h-4 w-4 mr-2" />
+                  {item.name}
+                </Button>
+              </Link>
+            );
+          })}
+        </div>
+
+        {/* Right Side Actions */}
+        <div className="flex items-center space-x-4">
+          {/* User Role Badge */}
+          {userRole && (
+            <div className="hidden lg:flex items-center gap-2 px-3 py-1 rounded-md bg-neutral-100">
+              <UserCheck className="h-4 w-4 text-neutral-500" />
+              <span className="text-sm text-neutral-600">
+                {getRoleDisplayName(userRole)}
+              </span>
+            </div>
+          )}
+
+          {/* Theme Toggle */}
+          <ModeToggle />
+
+          {/* User Menu */}
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" className="relative h-8 w-8 rounded-full">
+                <Avatar className="h-8 w-8">
+                  <AvatarImage src="" alt={getFullName()} />
+                  <AvatarFallback className="bg-gradient-to-r from-primary-500 to-secondary-500 text-white">
+                    {getFullName() ? getInitials(getFullName()) : "U"}
+                  </AvatarFallback>
+                </Avatar>
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="w-56" align="end" forceMount>
+              <DropdownMenuLabel className="font-normal">
+                <div className="flex flex-col space-y-1">
+                  <p className="text-sm font-medium leading-none">
+                    {getFullName()}
+                  </p>
+                  <p className="text-xs leading-none text-neutral-500">
+                    {user?.email}
+                  </p>
+                  {userRole && (
+                    <p className="text-xs leading-none text-neutral-500">
+                      {getRoleDisplayName(userRole)}
+                    </p>
+                  )}
+                </div>
+              </DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem asChild>
+                <Link href="/profile" className="flex items-center">
+                  <Settings className="mr-2 h-4 w-4" />
+                  <span>Profile Settings</span>
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href="/help" className="flex items-center">
+                  <HelpCircle className="mr-2 h-4 w-4" />
+                  <span>Help & Support</span>
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem
+                className="flex items-center text-red-600 cursor-pointer"
+                onClick={handleSignOut}
+              >
+                <LogOut className="mr-2 h-4 w-4" />
+                <span>Sign out</span>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+
+          {/* Mobile Menu Button */}
+          <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="sm" className="md:hidden">
+                <Menu className="h-5 w-5" />
+                <span className="sr-only">Open menu</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-80">
+              <SheetHeader>
+                <SheetTitle className="flex items-center gap-2">
+                  <Shield className="h-5 w-5" />
+                  SpecChem Safety LMS
+                </SheetTitle>
+              </SheetHeader>
+
+              {/* User Info */}
+              <div className="mt-6 p-4 rounded-lg bg-neutral-50">
+                <div className="flex items-center gap-3">
+                  <Avatar className="h-10 w-10">
                     <AvatarImage src="" alt={getFullName()} />
-                    <AvatarFallback className="bg-primary text-primary-foreground">
+                    <AvatarFallback className="bg-gradient-to-r from-primary-500 to-secondary-500 text-white">
                       {getFullName() ? getInitials(getFullName()) : "U"}
                     </AvatarFallback>
                   </Avatar>
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-56" align="end" forceMount>
-                <DropdownMenuLabel className="font-normal">
-                  <div className="flex flex-col space-y-1">
-                    <p className="text-sm font-medium leading-none">
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-medium truncate">
                       {getFullName()}
                     </p>
-                    <p className="text-xs leading-none text-muted-foreground">
+                    <p className="text-xs text-neutral-500 truncate">
                       {user?.email}
                     </p>
                     {userRole && (
-                      <p className="text-xs leading-none text-muted-foreground">
+                      <p className="text-xs text-neutral-500">
                         {getRoleDisplayName(userRole)}
                       </p>
                     )}
                   </div>
-                </DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem asChild>
-                  <Link href="/profile" className="flex items-center">
-                    <Settings className="mr-2 h-4 w-4" />
-                    <span>Profile Settings</span>
+                </div>
+              </div>
+
+              {/* Navigation Items */}
+              <div className="mt-6 space-y-2">
+                {filteredNavigation.map(item => {
+                  const isActive =
+                    pathname === item.href ||
+                    pathname.startsWith(item.href + "/");
+                  return (
+                    <Link key={item.name} href={item.href}>
+                      <Button
+                        variant={isActive ? "secondary" : "ghost"}
+                        className={cn(
+                          "w-full justify-start gap-3 h-12",
+                          isActive && "bg-primary-100 text-primary-600"
+                        )}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        <item.icon className="h-5 w-5" />
+                        <div className="flex flex-col items-start">
+                          <span className="font-medium">{item.name}</span>
+                          <span className="text-xs text-neutral-500">
+                            {item.description}
+                          </span>
+                        </div>
+                      </Button>
+                    </Link>
+                  );
+                })}
+              </div>
+
+              {/* Mobile Actions */}
+              <div className="mt-6 space-y-2">
+                <Button
+                  variant="ghost"
+                  className="w-full justify-start gap-3"
+                  asChild
+                >
+                  <Link href="/profile">
+                    <Settings className="h-4 w-4" />
+                    Profile Settings
                   </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/help" className="flex items-center">
-                    <HelpCircle className="mr-2 h-4 w-4" />
-                    <span>Help & Support</span>
+                </Button>
+                <Button
+                  variant="ghost"
+                  className="w-full justify-start gap-3"
+                  asChild
+                >
+                  <Link href="/help">
+                    <HelpCircle className="h-4 w-4" />
+                    Help & Support
                   </Link>
-                </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem
-                  className="flex items-center text-destructive cursor-pointer"
+                </Button>
+                <Button
+                  variant="ghost"
+                  className="w-full justify-start gap-3 text-red-600 hover:text-red-600"
                   onClick={handleSignOut}
                 >
-                  <LogOut className="mr-2 h-4 w-4" />
-                  <span>Sign out</span>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-
-            {/* Mobile Menu Button */}
-            <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
-              <SheetTrigger asChild>
-                <Button variant="ghost" size="sm" className="lg:hidden">
-                  <Menu className="h-5 w-5" />
-                  <span className="sr-only">Open menu</span>
+                  <LogOut className="h-4 w-4" />
+                  Sign out
                 </Button>
-              </SheetTrigger>
-              <SheetContent side="right" className="w-80">
-                <SheetHeader>
-                  <SheetTitle className="flex items-center gap-2">
-                    <Shield className="h-5 w-5" />
-                    SpecChem Safety LMS
-                  </SheetTitle>
-                </SheetHeader>
-
-                {/* User Info */}
-                <div className="mt-6 p-4 rounded-lg bg-muted/50">
-                  <div className="flex items-center gap-3">
-                    <Avatar className="h-10 w-10">
-                      <AvatarImage src="" alt={getFullName()} />
-                      <AvatarFallback className="bg-primary text-primary-foreground">
-                        {getFullName() ? getInitials(getFullName()) : "U"}
-                      </AvatarFallback>
-                    </Avatar>
-                    <div className="flex-1 min-w-0">
-                      <p className="text-sm font-medium truncate">
-                        {getFullName()}
-                      </p>
-                      <p className="text-xs text-muted-foreground truncate">
-                        {user?.email}
-                      </p>
-                      {userRole && (
-                        <p className="text-xs text-muted-foreground">
-                          {getRoleDisplayName(userRole)}
-                        </p>
-                      )}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Navigation Items */}
-                <div className="mt-section-tight space-y-stack-tight">
-                  {filteredNavigation.map(item => {
-                    const isActive =
-                      pathname === item.href ||
-                      pathname.startsWith(item.href + "/");
-                    return (
-                      <Link key={item.name} href={item.href}>
-                        <Button
-                          variant={isActive ? "secondary" : "ghost"}
-                          className={cn(
-                            "w-full justify-start gap-inline-relaxed h-12",
-                            isActive && "bg-accent text-accent-foreground"
-                          )}
-                          onClick={() => setIsMobileMenuOpen(false)}
-                        >
-                          <item.icon className="h-5 w-5" />
-                          <div className="flex flex-col items-start">
-                            <span className="font-medium">{item.name}</span>
-                            <span className="text-xs text-muted-foreground">
-                              {item.description}
-                            </span>
-                          </div>
-                        </Button>
-                      </Link>
-                    );
-                  })}
-                </div>
-
-                {/* Mobile Actions */}
-                <div className="mt-section-normal space-y-stack-tight">
-                  <Button
-                    variant="ghost"
-                    className="w-full justify-start gap-inline-relaxed"
-                    asChild
-                  >
-                    <Link href="/profile">
-                      <Settings className="h-4 w-4" />
-                      Profile Settings
-                    </Link>
-                  </Button>
-                  <Button
-                    variant="ghost"
-                    className="w-full justify-start gap-inline-relaxed"
-                    asChild
-                  >
-                    <Link href="/help">
-                      <HelpCircle className="h-4 w-4" />
-                      Help & Support
-                    </Link>
-                  </Button>
-                  <Button
-                    variant="ghost"
-                    className="w-full justify-start gap-inline-relaxed text-destructive hover:text-destructive"
-                    onClick={handleSignOut}
-                  >
-                    <LogOut className="h-4 w-4" />
-                    Sign out
-                  </Button>
-                </div>
-              </SheetContent>
-            </Sheet>
-          </div>
+              </div>
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
     </nav>

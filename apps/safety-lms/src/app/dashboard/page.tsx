@@ -2,6 +2,25 @@
 
 import { useUser } from "@/hooks/useUser";
 import { useAuth } from "@/hooks/useAuth";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import {
+  BookOpen,
+  BarChart3,
+  Users,
+  Building2,
+  CheckCircle,
+  XCircle,
+  TrendingUp,
+  Shield,
+} from "lucide-react";
 
 export default function DashboardPage() {
   const {
@@ -16,12 +35,15 @@ export default function DashboardPage() {
 
   if (!isAuthenticated()) {
     return (
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-primary-50 to-secondary-50 flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+          <div className="h-16 w-16 rounded-full bg-gradient-to-r from-primary-500 to-secondary-500 flex items-center justify-center mx-auto mb-4">
+            <Shield className="h-8 w-8 text-white" />
+          </div>
+          <h1 className="text-2xl font-bold text-neutral-900 mb-4">
             Loading...
           </h1>
-          <p className="text-gray-600 dark:text-gray-400">
+          <p className="text-neutral-600">
             Please wait while we load your dashboard.
           </p>
         </div>
@@ -32,135 +54,225 @@ export default function DashboardPage() {
   const permissions = getPermissions();
 
   return (
-    <div className="space-y-section-normal">
+    <div className="space-y-8">
       {/* Header */}
       <div className="flex justify-between items-center">
         <div>
-          <h1 className="text-3xl font-bold text-foreground">Dashboard</h1>
-          <p className="text-muted-foreground mt-2">
+          <h1 className="text-3xl font-bold text-neutral-900">Dashboard</h1>
+          <p className="text-neutral-600 mt-2">
             Welcome back, {getFullName()}!
           </p>
         </div>
+        <Badge variant="secondary" className="px-4 py-2">
+          {getRole()?.charAt(0).toUpperCase() + getRole()?.slice(1)}
+        </Badge>
+      </div>
+
+      {/* Stats Cards */}
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <Card className="hover:shadow-lg transition-shadow">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium text-neutral-600">
+              Total Courses
+            </CardTitle>
+            <BookOpen className="h-4 w-4 text-primary-600" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold text-neutral-900">12</div>
+            <p className="text-xs text-neutral-500">+2 from last month</p>
+          </CardContent>
+        </Card>
+
+        <Card className="hover:shadow-lg transition-shadow">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium text-neutral-600">
+              Completed
+            </CardTitle>
+            <CheckCircle className="h-4 w-4 text-accent-green-600" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold text-neutral-900">8</div>
+            <p className="text-xs text-neutral-500">+1 from last week</p>
+          </CardContent>
+        </Card>
+
+        <Card className="hover:shadow-lg transition-shadow">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium text-neutral-600">
+              In Progress
+            </CardTitle>
+            <TrendingUp className="h-4 w-4 text-accent-orange-600" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold text-neutral-900">3</div>
+            <p className="text-xs text-neutral-500">Active learning</p>
+          </CardContent>
+        </Card>
+
+        <Card className="hover:shadow-lg transition-shadow">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium text-neutral-600">
+              Certificates
+            </CardTitle>
+            <Shield className="h-4 w-4 text-secondary-600" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold text-neutral-900">5</div>
+            <p className="text-xs text-neutral-500">Safety certifications</p>
+          </CardContent>
+        </Card>
       </div>
 
       {/* User Info Card */}
-      <div className="bg-card rounded-lg shadow p-component-normal">
-        <h2 className="text-xl font-semibold text-card-foreground mb-component-normal">
-          Account Information
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-component-normal">
-          <div>
-            <p className="text-sm text-muted-foreground">Name</p>
-            <p className="text-card-foreground font-medium">{getFullName()}</p>
+      <Card className="hover:shadow-lg transition-shadow">
+        <CardHeader>
+          <CardTitle className="text-xl font-semibold text-neutral-900">
+            Account Information
+          </CardTitle>
+          <CardDescription>Your profile and account details</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="space-y-4">
+              <div>
+                <p className="text-sm text-neutral-500">Name</p>
+                <p className="text-neutral-900 font-medium">{getFullName()}</p>
+              </div>
+              <div>
+                <p className="text-sm text-neutral-500">Email</p>
+                <p className="text-neutral-900 font-medium">{user?.email}</p>
+              </div>
+            </div>
+            <div className="space-y-4">
+              <div>
+                <p className="text-sm text-neutral-500">Role</p>
+                <p className="text-neutral-900 font-medium capitalize">
+                  {getRole()}
+                </p>
+              </div>
+              <div>
+                <p className="text-sm text-neutral-500">Plant</p>
+                <p className="text-neutral-900 font-medium">
+                  {profile?.plant_id || "Not assigned"}
+                </p>
+              </div>
+            </div>
           </div>
-          <div>
-            <p className="text-sm text-muted-foreground">Email</p>
-            <p className="text-card-foreground font-medium">{user?.email}</p>
-          </div>
-          <div>
-            <p className="text-sm text-muted-foreground">Role</p>
-            <p className="text-card-foreground font-medium capitalize">
-              {getRole()}
-            </p>
-          </div>
-          <div>
-            <p className="text-sm text-muted-foreground">Plant</p>
-            <p className="text-card-foreground font-medium">
-              {profile?.plant_id || "Not assigned"}
-            </p>
-          </div>
-        </div>
-      </div>
+        </CardContent>
+      </Card>
 
       {/* Permissions Card */}
       {permissions && (
-        <div className="bg-card rounded-lg shadow p-component-normal">
-          <h2 className="text-xl font-semibold text-card-foreground mb-component-normal">
-            Your Permissions
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-component-normal">
-            <div className="flex items-center">
-              <div
-                className={`w-3 h-3 rounded-full mr-3 ${permissions.canManageUsers ? "bg-green-500" : "bg-muted"}`}
-              ></div>
-              <span className="text-card-foreground">Manage Users</span>
+        <Card className="hover:shadow-lg transition-shadow">
+          <CardHeader>
+            <CardTitle className="text-xl font-semibold text-neutral-900">
+              Your Permissions
+            </CardTitle>
+            <CardDescription>Access levels and capabilities</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div className="flex items-center space-x-3">
+                <div
+                  className={`w-3 h-3 rounded-full ${permissions.canManageUsers ? "bg-accent-green-500" : "bg-neutral-300"}`}
+                ></div>
+                <span className="text-neutral-900">Manage Users</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <div
+                  className={`w-3 h-3 rounded-full ${permissions.canManageCourses ? "bg-accent-green-500" : "bg-neutral-300"}`}
+                ></div>
+                <span className="text-neutral-900">Manage Courses</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <div
+                  className={`w-3 h-3 rounded-full ${permissions.canManagePlants ? "bg-accent-green-500" : "bg-neutral-300"}`}
+                ></div>
+                <span className="text-neutral-900">Manage Plants</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <div
+                  className={`w-3 h-3 rounded-full ${permissions.canViewReports ? "bg-accent-green-500" : "bg-neutral-300"}`}
+                ></div>
+                <span className="text-neutral-900">View Reports</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <div
+                  className={`w-3 h-3 rounded-full ${permissions.canManageEnrollments ? "bg-accent-green-500" : "bg-neutral-300"}`}
+                ></div>
+                <span className="text-neutral-900">Manage Enrollments</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <div
+                  className={`w-3 h-3 rounded-full ${permissions.canViewAllData ? "bg-accent-green-500" : "bg-neutral-300"}`}
+                ></div>
+                <span className="text-neutral-900">View All Data</span>
+              </div>
             </div>
-            <div className="flex items-center">
-              <div
-                className={`w-3 h-3 rounded-full mr-3 ${permissions.canManageCourses ? "bg-green-500" : "bg-muted"}`}
-              ></div>
-              <span className="text-card-foreground">Manage Courses</span>
-            </div>
-            <div className="flex items-center">
-              <div
-                className={`w-3 h-3 rounded-full mr-3 ${permissions.canManagePlants ? "bg-green-500" : "bg-muted"}`}
-              ></div>
-              <span className="text-card-foreground">Manage Plants</span>
-            </div>
-            <div className="flex items-center">
-              <div
-                className={`w-3 h-3 rounded-full mr-3 ${permissions.canViewReports ? "bg-green-500" : "bg-muted"}`}
-              ></div>
-              <span className="text-card-foreground">View Reports</span>
-            </div>
-            <div className="flex items-center">
-              <div
-                className={`w-3 h-3 rounded-full mr-3 ${permissions.canManageEnrollments ? "bg-green-500" : "bg-muted"}`}
-              ></div>
-              <span className="text-card-foreground">Manage Enrollments</span>
-            </div>
-            <div className="flex items-center">
-              <div
-                className={`w-3 h-3 rounded-full mr-3 ${permissions.canViewAllData ? "bg-green-500" : "bg-muted"}`}
-              ></div>
-              <span className="text-card-foreground">View All Data</span>
-            </div>
-          </div>
-        </div>
+          </CardContent>
+        </Card>
       )}
 
       {/* Quick Actions */}
-      <div className="bg-card rounded-lg shadow p-component-normal">
-        <h2 className="text-xl font-semibold text-card-foreground mb-component-normal">
-          Quick Actions
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-component-normal">
-          <a
-            href="/courses"
-            className="bg-primary-500 hover:bg-primary-600 text-primary-foreground p-component-normal rounded-lg text-center transition-colors"
-          >
-            <div className="text-2xl mb-2">📚</div>
-            <div className="font-medium">View Courses</div>
-          </a>
-          {permissions?.canViewReports && (
-            <a
-              href="/reports"
-              className="bg-semantic-success-600 hover:bg-semantic-success-700 text-white p-component-normal rounded-lg text-center transition-colors"
+      <Card className="hover:shadow-lg transition-shadow">
+        <CardHeader>
+          <CardTitle className="text-xl font-semibold text-neutral-900">
+            Quick Actions
+          </CardTitle>
+          <CardDescription>
+            Common tasks and navigation shortcuts
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <Button
+              asChild
+              className="h-20 flex-col space-y-2 bg-primary-500 hover:bg-primary-600"
             >
-              <div className="text-2xl mb-2">📊</div>
-              <div className="font-medium">View Reports</div>
-            </a>
-          )}
-          {permissions?.canManageUsers && (
-            <a
-              href="/users"
-              className="bg-secondary-darkBlue-600 hover:bg-secondary-darkBlue-700 text-white p-component-normal rounded-lg text-center transition-colors"
-            >
-              <div className="text-2xl mb-2">👥</div>
-              <div className="font-medium">Manage Users</div>
-            </a>
-          )}
-          {permissions?.canManagePlants && (
-            <a
-              href="/plants"
-              className="bg-semantic-warning-600 hover:bg-semantic-warning-700 text-white p-component-normal rounded-lg text-center transition-colors"
-            >
-              <div className="text-2xl mb-2">🏭</div>
-              <div className="font-medium">Manage Plants</div>
-            </a>
-          )}
-        </div>
-      </div>
+              <a href="/courses">
+                <BookOpen className="h-6 w-6" />
+                <span className="font-medium">View Courses</span>
+              </a>
+            </Button>
+
+            {permissions?.canViewReports && (
+              <Button
+                asChild
+                className="h-20 flex-col space-y-2 bg-accent-green-500 hover:bg-accent-green-600"
+              >
+                <a href="/reports">
+                  <BarChart3 className="h-6 w-6" />
+                  <span className="font-medium">View Reports</span>
+                </a>
+              </Button>
+            )}
+
+            {permissions?.canManageUsers && (
+              <Button
+                asChild
+                className="h-20 flex-col space-y-2 bg-secondary-600 hover:bg-secondary-700"
+              >
+                <a href="/users">
+                  <Users className="h-6 w-6" />
+                  <span className="font-medium">Manage Users</span>
+                </a>
+              </Button>
+            )}
+
+            {permissions?.canManagePlants && (
+              <Button
+                asChild
+                className="h-20 flex-col space-y-2 bg-accent-orange-500 hover:bg-accent-orange-600"
+              >
+                <a href="/plants">
+                  <Building2 className="h-6 w-6" />
+                  <span className="font-medium">Manage Plants</span>
+                </a>
+              </Button>
+            )}
+          </div>
+        </CardContent>
+      </Card>
     </div>
   );
 }
